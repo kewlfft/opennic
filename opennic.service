@@ -1,0 +1,14 @@
+[Unit]
+Description=opennic DNS configuration
+After=systemd-networkd.service network.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/opennic
+CapabilityBoundingSet=
+ProtectSystem=Full
+ProtectHome=yes
+ReadWriteDirectories=/etc
+
+[Install]
+WantedBy=multi-user.target
