@@ -1,13 +1,7 @@
 #!/bin/bash
 
-version=0.1
-
 if (( $# > 0 )); then
 	(( $# == 1 )) && case "$1" in
-	"--version")
-		echo "$(basename $0) ${version}"
-		exit 0
-		;;
 	"--help")
 		echo "$0 [--help|--version]"
 		echo "--version  Display version information"
@@ -15,6 +9,8 @@ if (( $# > 0 )); then
 		echo $'\nNote: $0 must be run as the root user and enabled to' \
 			'modify /etc/resolv.conf'
 		exit 0
+		;;
+	*)
 		;;
 	esac
 	echo "Error: invalid arguments." >&2

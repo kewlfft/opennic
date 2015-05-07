@@ -16,7 +16,7 @@ the net, the changes made to said file would be overwritten by opennic.
 
 ### Archlinux
 
-Grab the PKGBUILD from the AUR here [1]
+Grab the PKGBUILD from the AUR[1].
 
 ### systemd
 
