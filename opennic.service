@@ -9,8 +9,6 @@ CapabilityBoundingSet=
 ProtectSystem=full
 ProtectHome=yes
 ReadWriteDirectories=/etc
-Restart=on-failure
-RestartSec=2
 
 [Install]
 WantedBy=multi-user.target
