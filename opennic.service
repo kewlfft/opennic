@@ -1,14 +1,17 @@
 [Unit]
 Description=opennic DNS configuration
-After=systemd-networkd.service network.service
+Requires=network.target
+After=dhcpcd.service
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/usr/bin/opennic
 CapabilityBoundingSet=
 ProtectSystem=yes
 ProtectHome=yes
 ReadWriteDirectories=/etc
+Restart=on-failure
+RestartSec=2
 
 [Install]
 WantedBy=multi-user.target
