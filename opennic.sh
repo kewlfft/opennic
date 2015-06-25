@@ -1,8 +1,13 @@
 #!/bin/bash
 
-curlopts=('-s')
+host="api.opennicproject.org"
 api_ip=173.160.58.201
 get_rq="resolv&res=5"
+
+curlopts=(
+	'-s'
+	--resolve "${host}:443:${api_ip}"
+)
 
 if (( $# > 0 )); then
 	(( $# == 1 )) && case "$1" in
@@ -26,9 +31,9 @@ if (( $UID )); then
 	exit 1
 fi
 
-dns="$(curl "${curlopts[@]}" "https://${api_ip}/geoip/?${get_rq}")"
-if [[ $? != 0 && -n "$dns" ]]; then
-	echo "$dns">/etc/resolv.conf
+dns="$(curl "${curlopts[@]}" "https://${host}/geoip/?${get_rq}")"
+if [[ $? == 0 && -n "$dns" ]]; then
+	echo "$dns" >/etc/resolv.conf
 else
 	echo "Error: could not download opennic dns information." >&2
 	exit 1
