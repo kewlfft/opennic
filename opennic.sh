@@ -3,6 +3,7 @@
 host="api.opennicproject.org"
 api_ip=173.160.58.201
 get_rq="resolv&res=5"
+version=0.1
 
 curlopts=(
 	'-s'
@@ -17,6 +18,10 @@ if (( $# > 0 )); then
 		echo "--help     Display this help message"
 		echo $'\nNote: $0 must be run as the root user and enabled to' \
 			'modify /etc/resolv.conf'
+		exit 0
+		;;
+	'--version')
+		echo "$0 version $version"
 		exit 0
 		;;
 	*)
