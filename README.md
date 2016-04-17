@@ -29,5 +29,5 @@ recommended path is `/etc/systemd/system`
 Install the `opennic.sh` in `/usr/local/bin` (or `/usr/bin`) and make the boot
 scripts run the script on boot after connecting to the network.
 
-[0] http://www.opennicproject.org/geoip/geotxt4.txt
-[1] https://aur.archlinux.org/packages/opennic-git/
+[0] http://www.opennicproject.org/geoip/geotxt4.txt  
+[1] https://aur.archlinux.org/packages/opennic-git/  
