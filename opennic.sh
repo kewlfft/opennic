@@ -3,42 +3,46 @@
 host="api.opennicproject.org"
 api_ip=173.160.58.201
 get_rq="resolv&res=5"
-version=0.1
+version=0.2
 
 curlopts=(
 	'-s'
 	--resolve "${host}:443:${api_ip}"
 )
 
-if (( $# > 0 )); then
-	(( $# == 1 )) && case "$1" in
+output="/etc/resolv.conf"
+
+while (( $# > 0 )); do
+	case "$1" in
 	"--help")
-		echo "$0 [--help|--version]"
-		echo "--version  Display version information"
-		echo "--help     Display this help message"
-		echo $'\nNote: $0 must be run as the root user and enabled to' \
-			'modify /etc/resolv.conf'
+		echo "$0 [--output <file>] | --help | --version"
+		echo "--output <file>  Set the output file (default: ${output})"
+		echo "--version        Display version information"
+		echo "--help           Display this help message"$'\n'
+		echo "Note: run $0 as a user, preferably root"
+		echo "      which may write to ${output}"
 		exit 0
 		;;
 	'--version')
 		echo "$0 version $version"
 		exit 0
 		;;
+	'--output'|'-o')
+		# write output to terminal: ./opennic.sh -o /dev/stdout
+		output="$2"
+		shift
+		;;
 	*)
+		echo "Error: invalid arguments." >&2
+		exit 1
 		;;
 	esac
-	echo "Error: invalid arguments." >&2
-	exit 1
-fi
-
-if (( $UID )); then
-	echo "Error: this script must be run as root." >&2
-	exit 1
-fi
+	shift
+done
 
 dns="$(curl "${curlopts[@]}" "https://${host}/geoip/?${get_rq}")"
 if [[ $? == 0 && -n "$dns" ]]; then
-	echo "$dns" >/etc/resolv.conf
+	echo "$dns" >"$output"
 else
 	echo "Error: could not download opennic dns information." >&2
 	exit 1

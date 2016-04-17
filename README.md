@@ -29,12 +29,5 @@ recommended path is `/etc/systemd/system`
 Install the `opennic.sh` in `/usr/local/bin` (or `/usr/bin`) and make the boot
 scripts run the script on boot after connecting to the network.
 
-## Security considerations
-
-QUANTUM packet injection is an attack vector for plaintext HTTP connections.<br>
-Opennicproject.org staff is working on building a cryptographic web of trust and
-is in the course of implementing HTTPS.
-The current version however doesn't account for any of these things.
-
 [0] http://www.opennicproject.org/geoip/geotxt4.txt
-[1] <insert aur url here>
+[1] https://aur.archlinux.org/packages/opennic-git/
