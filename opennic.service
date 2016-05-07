@@ -1,7 +1,7 @@
 [Unit]
 Description=opennic DNS configuration
-Requires=network.target
-After=dhcpcd.service
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=simple
