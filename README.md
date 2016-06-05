@@ -6,17 +6,17 @@ Using the fixed ip, the three nearest opennic servers, as listed by the [API][1]
 will be written to `/etc/resolv.conf`.
 
 If the OpenNIC lookup fails, it's possible to replace the error message with a
-default DNS lookup address, as in this patch.
+default DNS lookup address, as in this [patch][2].
 
 Please note that DHCP clients like `dhcpcd` tend to have mechanisms in place to
-update the `/etc/resolv.conf`. As opennic relies on an IP to be resolved over
+update `/etc/resolv.conf`. As opennic relies on an IP to be resolved over
 the net, the changes made to said file would be overwritten by opennic.
 
 ## Installation
 
 ### Archlinux
 
-Grab the PKGBUILD from the [AUR][2].
+Grab the PKGBUILD from the [AUR][3].
 
 ### systemd
 
@@ -38,4 +38,5 @@ of the ISC license.  See the [LICENSE](LICENSE) file for details.
 
 [0]: https://www.opennicproject.org/
 [1]: https://api.opennicproject.org/geoip/?resolv
-[2]: https://aur.archlinux.org/packages/opennic-git
+[2]: default_ns.patch
+[3]: https://aur.archlinux.org/packages/opennic-git

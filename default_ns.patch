@@ -1,0 +1,14 @@
+diff --git a/opennic.sh b/opennic.sh
+index afbc26d..2c87189 100755
+--- a/opennic.sh
++++ b/opennic.sh
+@@ -49,8 +49,7 @@ dns="$(curl "${curlopts[@]}" "https://${host}/geoip/?${get_rq}")"
+ if [[ $? == 0 && -n "$dns" ]]; then
+ 	echo "$dns" >"$output"
+ else
+-	echo "Error: could not download opennic dns information." >&2
+-	exit 1
++	echo "nameserver 208.67.222.222 # opendns.org" >"$output"
+ fi
+ 
+ exit 0
