@@ -1,4 +1,9 @@
 #!/bin/bash
+#
+# Copyright (c) 2015-2016, mar77i <mar77i at mar77i dot ch>
+#
+# This software may be modified and distributed under the terms
+# of the ISC license.  See the LICENSE file for details.
 
 host="api.opennicproject.org"
 api_ip=173.160.58.201
