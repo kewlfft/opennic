@@ -6,7 +6,7 @@
 # of the ISC license.  See the LICENSE file for details.
 
 host="api.opennicproject.org"
-api_ip=173.160.58.201
+api_ip=161.97.219.82
 get_rq="resolv&res=5"
 version=0.2
 
